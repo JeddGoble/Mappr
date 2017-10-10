@@ -7,5 +7,7 @@ target 'ARFlickr' do
 
   # Pods for ARFlickr
   pod 'ARCL'
+  pod 'SDWebImage', '~> 4.1'
+  pod 'RealmSwift', '3.0.0-rc.1'
 
 end
