@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		517ADCD9C565911EBD047EA1 /* Pods_ARFlickr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD243966C0B7AB9DB67405F /* Pods_ARFlickr.framework */; };
 		AF4B33281F8D6E28001E919E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B33271F8D6E28001E919E /* AppDelegate.swift */; };
 		AF4B332A1F8D6E28001E919E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B33291F8D6E28001E919E /* ViewController.swift */; };
 		AF4B332D1F8D6E28001E919E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4B332B1F8D6E28001E919E /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5DD243966C0B7AB9DB67405F /* Pods_ARFlickr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARFlickr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4B33241F8D6E28001E919E /* ARFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4B33271F8D6E28001E919E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF4B33291F8D6E28001E919E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		AF4B332E1F8D6E28001E919E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4B33311F8D6E28001E919E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4B33331F8D6E28001E919E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.release.xcconfig"; sourceTree = "<group>"; };
+		EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517ADCD9C565911EBD047EA1 /* Pods_ARFlickr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38BB867FA2349F6437B1D447 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DD243966C0B7AB9DB67405F /* Pods_ARFlickr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF4B331B1F8D6E28001E919E = {
 			isa = PBXGroup;
 			children = (
 				AF4B33261F8D6E28001E919E /* ARFlickr */,
 				AF4B33251F8D6E28001E919E /* Products */,
+				F55F6921E6EF70A5CD471E2B /* Pods */,
+				38BB867FA2349F6437B1D447 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = ARFlickr;
 			sourceTree = "<group>";
 		};
+		F55F6921E6EF70A5CD471E2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */,
+				CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF4B33361F8D6E28001E919E /* Build configuration list for PBXNativeTarget "ARFlickr" */;
 			buildPhases = (
+				1E475A40226E1D91703438CB /* [CP] Check Pods Manifest.lock */,
 				AF4B33201F8D6E28001E919E /* Sources */,
 				AF4B33211F8D6E28001E919E /* Frameworks */,
 				AF4B33221F8D6E28001E919E /* Resources */,
+				33BC0034171781C848B0F63B /* [CP] Embed Pods Frameworks */,
+				3783E49F01BEA6AB05B567BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E475A40226E1D91703438CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33BC0034171781C848B0F63B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3783E49F01BEA6AB05B567BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF4B33201F8D6E28001E919E /* Sources */ = {
@@ -272,6 +347,7 @@
 		};
 		AF4B33371F8D6E28001E919E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +363,7 @@
 		};
 		AF4B33381F8D6E28001E919E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
