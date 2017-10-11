@@ -8,21 +8,9 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
-struct FlickrResponse: Codable {
-    
-    init?(json: [String:Any]) {
-        guard let root = json["photos"] as? [String:Any], let photos = root["photo"] as? [FlickrPhotoData] else {
-            return
-        }
-        
-        self.photos = photos
-    }
-    
-    var photos: [FlickrPhotoData]?
-}
-
-struct FlickrPhotoData: Codable {
+struct FlickrPhoto: Codable {
     
     init?(json: [String:Any]) {
         if let title = json["title"] as? String {
@@ -34,15 +22,19 @@ struct FlickrPhotoData: Codable {
         if let owner = json["owner"] as? String {
             self.owner = owner
         }
+        if let urlString = json["url_m"] as? String {
+            self.urlString = urlString
+        }
+        if let latString = json["latitude"] as? String, let latDouble = Double(latString), let lonString = json["longitude"] as? String, let lonDouble = Double(lonString) {
+            self.latitude = latDouble
+            self.longitude = lonDouble
+        }
     }
     
     var title: String?
     var id: String?
     var owner: String?
-}
-
-struct FlickrPhoto {
-    
-    var photoData: FlickrPhotoData
-    var image: UIImage?
+    var urlString: String?
+    var latitude: Double?
+    var longitude: Double?
 }
