@@ -49,28 +49,37 @@ class ViewController: UIViewController {
         downloadAllowed = true
     }
     
-    func downloadPhotos(photos: [FlickrPhoto]) {
+    func downloadPhotos(photos: [FlickrPhoto], userLocation: CLLocation) {
         
         print("Attempting photos download")
         
         for photo in photos {
             guard let urlString = photo.urlString, let url = URL(string: urlString) else {
                 print("Photo has no URL")
-                return
+                continue
             }
             
-            SDWebImageDownloader().downloadImage(with: url, options: .highPriority, progress: nil, completed: { (image, data, error, completed) in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                
-                guard let image = image else {
-                    print("Image download unsuccessful")
-                    return
-                }
-                
-                self.addAnnotation(photo: photo, image: image)
-            })
+            guard let lat = photo.latitude, let lon = photo.longitude else {
+                continue
+            }
+            
+            let photoLocation = CLLocation(latitude: lat, longitude: lon)
+            let distance = userLocation.distance(from: photoLocation)
+            
+            if distance < 150.0 {
+                SDWebImageDownloader().downloadImage(with: url, options: .highPriority, progress: nil, completed: { (image, data, error, completed) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    
+                    guard let image = image else {
+                        print("Image download unsuccessful")
+                        return
+                    }
+                    
+                    self.addAnnotation(photo: photo, image: image)
+                })
+            }
         }
     }
     
@@ -81,7 +90,7 @@ class ViewController: UIViewController {
         
         let location = CLLocation(latitude: lat, longitude: lon)
         let annotationNode = LocationAnnotationNode(location: location, image: image)
-        annotationNode.scaleRelativeToDistance = false
+        annotationNode.scaleRelativeToDistance = true
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         print("Added annotation")
     }
@@ -96,7 +105,7 @@ extension ViewController: CLLocationManagerDelegate {
         }
         
         downloadAllowed = false
-        downloadTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
+        downloadTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
         
         print("Attempting Flickr API call")
         
@@ -105,7 +114,8 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=10&nojsoncallback=1&extras=url_m,geo&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
+        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=date-posted-desc&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
+        print(urlString)
         
         if let url = URL(string: urlString) {
             let urlSession = URLSession.shared
@@ -118,7 +128,6 @@ extension ViewController: CLLocationManagerDelegate {
                     print("Data returned null")
                     return
                 }
-                
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] {
@@ -133,7 +142,7 @@ extension ViewController: CLLocationManagerDelegate {
                             }
                             
                             DispatchQueue.main.async {
-                                self.downloadPhotos(photos: photos)
+                                self.downloadPhotos(photos: photos, userLocation: location)
                             }
                         }
                     }
