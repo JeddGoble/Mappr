@@ -89,11 +89,8 @@ class ViewController: UIViewController {
 
 extension ViewController: CLLocationManagerDelegate {
     
-}
-
-extension ViewController: SceneLocationViewDelegate {
-    
-    func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         guard downloadAllowed == true else {
             return
         }
@@ -102,6 +99,11 @@ extension ViewController: SceneLocationViewDelegate {
         downloadTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
         
         print("Attempting Flickr API call")
+        
+        guard let location = locations.first else {
+            print("No location found")
+            return
+        }
         
         let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=10&nojsoncallback=1&extras=url_m,geo&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
         
@@ -142,6 +144,14 @@ extension ViewController: SceneLocationViewDelegate {
             
             task.resume()
         }
+    }
+    
+}
+
+extension ViewController: SceneLocationViewDelegate {
+    
+    func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
+        
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
