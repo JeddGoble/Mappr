@@ -21,10 +21,16 @@ class ViewController: UIViewController {
     }
     
     var sceneLocationView = SceneLocationView()
+    var locationNodes: Set<LocationAnnotationNode> = []
+    
     var locationManager = CLLocationManager()
     
     var downloadTimer: Timer?
     var downloadAllowed: Bool = true
+    
+    var dateTakenPage: Int = 1
+    var relevancePage: Int = 1
+    var interestingnessPage: Int = 1
     
     var isPresentingFilterMethodView: Bool = false
     var filterMethod: FilterMethod = .dateTaken
@@ -34,6 +40,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var arViewContainer: UIView!
     
     @IBOutlet weak var methodSelectViewContainer: UIView!
+    
+    @IBOutlet weak var reloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +87,8 @@ class ViewController: UIViewController {
     }
     
     @objc func reEnableDownloadAllowed() {
-        downloadAllowed = true
+        
+        loadMoreImages(removeAllNodes: false, iteratePage: true)
     }
     
     func downloadPhotos(photos: [FlickrPhoto], userLocation: CLLocation) {
@@ -99,7 +108,7 @@ class ViewController: UIViewController {
             let photoLocation = CLLocation(latitude: lat, longitude: lon)
             let distance = userLocation.distance(from: photoLocation)
             
-            if distance < 150.0 {
+            if distance < 100.0 {
                 SDWebImageDownloader().downloadImage(with: url, options: .highPriority, progress: nil, completed: { (image, data, error, completed) in
                     if let error = error {
                         print(error.localizedDescription)
@@ -122,8 +131,17 @@ class ViewController: UIViewController {
         }
         
         let location = CLLocation(latitude: lat, longitude: lon)
+        
+        // Check for identical coordinates and discard if found ... prevent flickering images
+        for node in locationNodes {
+            if node.location.coordinate.latitude == location.coordinate.latitude && node.location.coordinate.longitude == location.coordinate.longitude {
+                return
+            }
+        }
+        
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         annotationNode.scaleRelativeToDistance = true
+        locationNodes.insert(annotationNode)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         print("Added annotation")
     }
@@ -135,6 +153,37 @@ class ViewController: UIViewController {
         view.bringSubview(toFront: methodSelectViewContainer)
     }
     
+    @IBAction func onReloadButtonTapped(_ sender: UIButton) {
+        loadMoreImages(removeAllNodes: true, iteratePage: true)
+    }
+    
+    func loadMoreImages(removeAllNodes: Bool, iteratePage: Bool) {
+        
+        reloadButton.isEnabled = false
+        
+        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { (timer) in
+            self.reloadButton.isEnabled = true
+        }
+        
+        if removeAllNodes {
+            for node in locationNodes {
+                sceneLocationView.removeLocationNode(locationNode: node)
+            }
+        }
+        
+        if iteratePage {
+            switch filterMethod {
+            case .dateTaken:
+                dateTakenPage += 1
+            case .relevance:
+                relevancePage += 1
+            case .interestingness:
+                interestingnessPage += 1
+            }
+        }
+        
+        downloadAllowed = true
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -160,7 +209,18 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(flickrAPIKey)&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=\(filterMethod.apiArgument)&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
+        var page: Int = 1
+        
+        switch filterMethod {
+        case .dateTaken:
+            page = dateTakenPage
+        case .relevance:
+            page = relevancePage
+        case .interestingness:
+            page = interestingnessPage
+        }
+        
+        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(flickrAPIKey)&format=json&accuracy=16&sort=date-posted-desc&per_page=250&page=\(page)&nojsoncallback=1&sort=\(filterMethod.apiArgument)&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
         print(urlString)
         
         if let url = URL(string: urlString) {
@@ -207,10 +267,9 @@ extension ViewController: MethodSelectDelegate {
     
     func tappedMethodButton(method: FilterMethod) {
         
-        // TODO: Remove all annotations? Not currently supported by ARCL
-        
         filterMethod = method
-        downloadAllowed = true
+        
+        loadMoreImages(removeAllNodes: true, iteratePage: false)
         
         methodSelectViewContainer.isHidden = true
         isPresentingFilterMethodView = false

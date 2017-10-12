@@ -22,7 +22,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owp-Te-ztk" userLabel="AR View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOU-R3-bNO" userLabel="Method Select Container">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
@@ -75,12 +75,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-q3-HYw">
+                                <rect key="frame" x="325" y="80" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tXd-jG-6dq"/>
+                                    <constraint firstAttribute="width" constant="30" id="xif-xk-LJp"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="reloadSolid"/>
+                                <connections>
+                                    <action selector="onReloadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8ZR-c6-B6k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RYD-X8-yXW" secondAttribute="trailing" id="4mG-PA-Qcm"/>
                             <constraint firstItem="AZD-3h-PzB" firstAttribute="top" secondItem="RYD-X8-yXW" secondAttribute="bottom" id="APw-9O-dEr"/>
                             <constraint firstItem="AZD-3h-PzB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IOA-Ku-sXd"/>
+                            <constraint firstItem="hq1-q3-HYw" firstAttribute="top" secondItem="AZD-3h-PzB" secondAttribute="bottom" constant="20" id="U91-Ty-UTT"/>
                             <constraint firstItem="0NW-6q-dmT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WlO-Fc-xk3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0NW-6q-dmT" secondAttribute="bottom" id="XuW-4D-eZW"/>
                             <constraint firstItem="RYD-X8-yXW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Y91-N2-eUj"/>
@@ -88,6 +100,7 @@
                             <constraint firstItem="RYD-X8-yXW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iu7-fA-fUV"/>
                             <constraint firstItem="AZD-3h-PzB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="l7a-aU-8IJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0NW-6q-dmT" secondAttribute="trailing" id="nfP-TH-pEh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hq1-q3-HYw" secondAttribute="trailing" constant="20" id="oWm-j2-PXj"/>
                             <constraint firstItem="0NW-6q-dmT" firstAttribute="top" secondItem="AZD-3h-PzB" secondAttribute="bottom" id="yvx-ID-8iv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -95,6 +108,7 @@
                     <connections>
                         <outlet property="arViewContainer" destination="owp-Te-ztk" id="UFU-cz-iGl"/>
                         <outlet property="methodSelectViewContainer" destination="sOU-R3-bNO" id="Utj-ku-1S9"/>
+                        <outlet property="reloadButton" destination="hq1-q3-HYw" id="8O5-hz-dbY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,4 +116,7 @@
             <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reloadSolid" width="256" height="256"/>
+    </resources>
 </document>
