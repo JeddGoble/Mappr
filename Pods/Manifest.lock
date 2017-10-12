@@ -1,25 +1,17 @@
 PODS:
   - ARCL (1.0.1)
-  - Realm (3.0.0-rc.1):
-    - Realm/Headers (= 3.0.0-rc.1)
-  - Realm/Headers (3.0.0-rc.1)
-  - RealmSwift (3.0.0-rc.1):
-    - Realm (= 3.0.0-rc.1)
-  - SDWebImage (4.1.0):
-    - SDWebImage/Core (= 4.1.0)
-  - SDWebImage/Core (4.1.0)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
 
 DEPENDENCIES:
   - ARCL
-  - RealmSwift (= 3.0.0-rc.1)
   - SDWebImage (~> 4.1)
 
 SPEC CHECKSUMS:
   ARCL: 193b108d6fd5277ce742be3af92ccf81bbdd2f3b
-  Realm: f79164edf2fb3807debe2fd2132ae15ed642d0a6
-  RealmSwift: f3e689d09a6cc406cfa6f32dc4da432543aa945b
-  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
 
-PODFILE CHECKSUM: 2e256a1521b6e38d478513b6b60b82d0ffd091d2
+PODFILE CHECKSUM: 8dba2b52eec8b8f32b19cf2d4ee43bcda0b27794
 
 COCOAPODS: 1.2.1

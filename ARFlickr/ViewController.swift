@@ -15,6 +15,7 @@ import ARKit
 
 class ViewController: UIViewController {
 
+    // Paste your own Flickr API Key here:
     var flickrAPIKey: String {
         return "0fa112504f3a3e7c9d74cad429d6f709"
     }
@@ -151,6 +152,11 @@ extension ViewController: CLLocationManagerDelegate {
         
         guard let location = locations.first else {
             print("No location found")
+            return
+        }
+        
+        guard flickrAPIKey.characters.count > 0 else {
+            print("No Flickr API key found. Paste your key into the String at the top of ViewController.swift")
             return
         }
         
