@@ -207,6 +207,8 @@ extension ViewController: MethodSelectDelegate {
     
     func tappedMethodButton(method: FilterMethod) {
         
+        // TODO: Remove all annotations? Not currently supported by ARCL
+        
         filterMethod = method
         downloadAllowed = true
         

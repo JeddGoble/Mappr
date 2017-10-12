@@ -71,6 +71,7 @@
                         <constraint firstAttribute="trailing" secondItem="FsS-sE-3cv" secondAttribute="trailing" constant="8" id="3op-IM-vmP"/>
                         <constraint firstItem="0Q5-Wb-3Jo" firstAttribute="leading" secondItem="FNs-qv-p7p" secondAttribute="leading" constant="8" id="6AN-fp-PKA"/>
                         <constraint firstItem="FsS-sE-3cv" firstAttribute="leading" secondItem="FNs-qv-p7p" secondAttribute="leading" constant="8" id="EGV-5N-rue"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="335" id="EM5-GY-ieN"/>
                         <constraint firstItem="FsS-sE-3cv" firstAttribute="top" secondItem="ucI-Qf-LUt" secondAttribute="bottom" constant="10" id="HeX-o0-yUz"/>
                         <constraint firstItem="ucI-Qf-LUt" firstAttribute="leading" secondItem="FNs-qv-p7p" secondAttribute="leading" constant="8" id="MSV-bt-btc"/>
                         <constraint firstItem="0Q5-Wb-3Jo" firstAttribute="top" secondItem="FsS-sE-3cv" secondAttribute="bottom" constant="10" id="N6W-KL-nXp"/>
@@ -82,9 +83,10 @@
             </subviews>
             <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FNs-qv-p7p" secondAttribute="trailing" constant="20" id="39T-1b-5l6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FNs-qv-p7p" secondAttribute="trailing" priority="999" constant="20" id="39T-1b-5l6"/>
                 <constraint firstItem="UCo-zX-3cB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Tm-o4-tFf"/>
-                <constraint firstItem="FNs-qv-p7p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dML-zE-m0U"/>
+                <constraint firstItem="FNs-qv-p7p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="20" id="dML-zE-m0U"/>
+                <constraint firstItem="FNs-qv-p7p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oKo-us-L4o"/>
                 <constraint firstItem="FNs-qv-p7p" firstAttribute="top" secondItem="UCo-zX-3cB" secondAttribute="bottom" constant="-11" id="uPU-qq-EPE"/>
                 <constraint firstItem="UCo-zX-3cB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yYc-2B-f2w"/>
             </constraints>
