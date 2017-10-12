@@ -15,13 +15,17 @@ import ARKit
 
 class ViewController: UIViewController {
 
+    var flickrAPIKey: String {
+        return "0fa112504f3a3e7c9d74cad429d6f709"
+    }
+    
     var sceneLocationView = SceneLocationView()
     var locationManager = CLLocationManager()
     
     var downloadTimer: Timer?
     var downloadAllowed: Bool = true
     
-    var isPresentingFilterMethodView: Bool = true
+    var isPresentingFilterMethodView: Bool = false
     var filterMethod: FilterMethod = .dateTaken
     
     var firstLayout: Bool = true
@@ -29,12 +33,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var arViewContainer: UIView!
     
     @IBOutlet weak var methodSelectViewContainer: UIView!
-    
-    @IBOutlet weak var statusBarBackgroundView: UILabel!
-    
-    @IBOutlet weak var topBarView: UIView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +59,9 @@ class ViewController: UIViewController {
         }
         
         firstLayout = false
-        sceneLocationView.frame = arViewContainer.frame
+        sceneLocationView.frame = arViewContainer.bounds
         arViewContainer.addSubview(sceneLocationView)
+        sceneLocationView.bindFrameToSuperviewBounds()
         addMethodSelectView()
     }
     
@@ -76,9 +75,6 @@ class ViewController: UIViewController {
         bundleView.frame = methodSelectViewContainer.bounds
         
         methodSelectViewContainer.isHidden = !isPresentingFilterMethodView
-        
-        view.bringSubview(toFront: statusBarBackgroundView)
-        view.bringSubview(toFront: topBarView)
     }
     
     @objc func reEnableDownloadAllowed() {
@@ -158,7 +154,7 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=\(filterMethod.apiArgument)&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
+        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(flickrAPIKey)&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=\(filterMethod.apiArgument)&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
         print(urlString)
         
         if let url = URL(string: urlString) {
@@ -207,6 +203,9 @@ extension ViewController: MethodSelectDelegate {
         
         filterMethod = method
         downloadAllowed = true
+        
+        methodSelectViewContainer.isHidden = true
+        isPresentingFilterMethodView = false
     }
 }
 

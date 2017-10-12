@@ -15,6 +15,7 @@
 		AF4B33321F8D6E28001E919E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4B33301F8D6E28001E919E /* LaunchScreen.storyboard */; };
 		AF97BB771F8FE4AB00B980F8 /* MethodSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */; };
 		AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */; };
+		AF97BB7B1F8FF0EF00B980F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */; };
 		AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9EFC81F8D792700F5B8A9 /* Models.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		AF4B33331F8D6E28001E919E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MethodSelectView.xib; sourceTree = "<group>"; };
 		AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodSelectView.swift; sourceTree = "<group>"; };
+		AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AFB9EFC81F8D792700F5B8A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.release.xcconfig"; sourceTree = "<group>"; };
 		EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				AF4B33271F8D6E28001E919E /* AppDelegate.swift */,
 				AF4B33291F8D6E28001E919E /* ViewController.swift */,
+				AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */,
 				AFB9EFC81F8D792700F5B8A9 /* Models.swift */,
 				AF4B332B1F8D6E28001E919E /* Main.storyboard */,
 				AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */,
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF97BB7B1F8FF0EF00B980F8 /* Extensions.swift in Sources */,
 				AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */,
 				AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */,
 				AF4B332A1F8D6E28001E919E /* ViewController.swift in Sources */,

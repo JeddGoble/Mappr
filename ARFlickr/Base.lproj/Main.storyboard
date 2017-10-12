@@ -95,8 +95,6 @@
                     <connections>
                         <outlet property="arViewContainer" destination="owp-Te-ztk" id="UFU-cz-iGl"/>
                         <outlet property="methodSelectViewContainer" destination="sOU-R3-bNO" id="Utj-ku-1S9"/>
-                        <outlet property="statusBarBackgroundView" destination="RYD-X8-yXW" id="OeB-he-d5n"/>
-                        <outlet property="topBarView" destination="AZD-3h-PzB" id="bKs-dR-Mzb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
