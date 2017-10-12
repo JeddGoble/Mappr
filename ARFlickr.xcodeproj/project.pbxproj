@@ -13,6 +13,8 @@
 		AF4B332D1F8D6E28001E919E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4B332B1F8D6E28001E919E /* Main.storyboard */; };
 		AF4B332F1F8D6E28001E919E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4B332E1F8D6E28001E919E /* Assets.xcassets */; };
 		AF4B33321F8D6E28001E919E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4B33301F8D6E28001E919E /* LaunchScreen.storyboard */; };
+		AF97BB771F8FE4AB00B980F8 /* MethodSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */; };
+		AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */; };
 		AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9EFC81F8D792700F5B8A9 /* Models.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		AF4B332E1F8D6E28001E919E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4B33311F8D6E28001E919E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4B33331F8D6E28001E919E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MethodSelectView.xib; sourceTree = "<group>"; };
+		AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodSelectView.swift; sourceTree = "<group>"; };
 		AFB9EFC81F8D792700F5B8A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.release.xcconfig"; sourceTree = "<group>"; };
 		EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				AF4B33291F8D6E28001E919E /* ViewController.swift */,
 				AFB9EFC81F8D792700F5B8A9 /* Models.swift */,
 				AF4B332B1F8D6E28001E919E /* Main.storyboard */,
+				AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */,
+				AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */,
 				AF4B332E1F8D6E28001E919E /* Assets.xcassets */,
 				AF4B33301F8D6E28001E919E /* LaunchScreen.storyboard */,
 				AF4B33331F8D6E28001E919E /* Info.plist */,
@@ -154,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4B33321F8D6E28001E919E /* LaunchScreen.storyboard in Resources */,
+				AF97BB771F8FE4AB00B980F8 /* MethodSelectView.xib in Resources */,
 				AF4B332F1F8D6E28001E919E /* Assets.xcassets in Resources */,
 				AF4B332D1F8D6E28001E919E /* Main.storyboard in Resources */,
 			);
@@ -215,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */,
+				AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */,
 				AF4B332A1F8D6E28001E919E /* ViewController.swift in Sources */,
 				AF4B33281F8D6E28001E919E /* AppDelegate.swift in Sources */,
 			);

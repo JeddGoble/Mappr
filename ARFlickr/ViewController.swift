@@ -21,12 +21,26 @@ class ViewController: UIViewController {
     var downloadTimer: Timer?
     var downloadAllowed: Bool = true
     
+    var isPresentingFilterMethodView: Bool = true
+    var filterMethod: FilterMethod = .dateTaken
+    
+    var firstLayout: Bool = true
+    
+    @IBOutlet weak var arViewContainer: UIView!
+    
+    @IBOutlet weak var methodSelectViewContainer: UIView!
+    
+    @IBOutlet weak var statusBarBackgroundView: UILabel!
+    
+    @IBOutlet weak var topBarView: UIView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneLocationView.locationDelegate = self
         sceneLocationView.run()
-        view.addSubview(sceneLocationView)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -42,7 +56,29 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        sceneLocationView.frame = view.bounds
+        guard firstLayout else {
+            return
+        }
+        
+        firstLayout = false
+        sceneLocationView.frame = arViewContainer.frame
+        arViewContainer.addSubview(sceneLocationView)
+        addMethodSelectView()
+    }
+    
+    func addMethodSelectView() {
+        guard let bundleView = Bundle.main.loadNibNamed(MethodSelectView.nibName, owner: nil, options: nil)?.first as? MethodSelectView else {
+            return
+        }
+        
+        bundleView.delegate = self
+        methodSelectViewContainer.addSubview(bundleView)
+        bundleView.frame = methodSelectViewContainer.bounds
+        
+        methodSelectViewContainer.isHidden = !isPresentingFilterMethodView
+        
+        view.bringSubview(toFront: statusBarBackgroundView)
+        view.bringSubview(toFront: topBarView)
     }
     
     @objc func reEnableDownloadAllowed() {
@@ -94,6 +130,14 @@ class ViewController: UIViewController {
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         print("Added annotation")
     }
+    
+    @IBAction func onFilterMethodButtonTapped(_ sender: UIButton) {
+        
+        isPresentingFilterMethodView = !isPresentingFilterMethodView
+        methodSelectViewContainer.isHidden = !isPresentingFilterMethodView
+        view.bringSubview(toFront: methodSelectViewContainer)
+    }
+    
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -105,7 +149,7 @@ extension ViewController: CLLocationManagerDelegate {
         }
         
         downloadAllowed = false
-        downloadTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
+        downloadTimer = Timer.scheduledTimer(timeInterval: 120.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
         
         print("Attempting Flickr API call")
         
@@ -114,7 +158,7 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=date-posted-desc&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
+        let urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0fa112504f3a3e7c9d74cad429d6f709&format=json&accuracy=16&sort=date-posted-desc&per_page=500&nojsoncallback=1&sort=\(filterMethod.apiArgument)&extras=url_m,geo&radius=1&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
         print(urlString)
         
         if let url = URL(string: urlString) {
@@ -155,6 +199,15 @@ extension ViewController: CLLocationManagerDelegate {
         }
     }
     
+}
+
+extension ViewController: MethodSelectDelegate {
+    
+    func tappedMethodButton(method: FilterMethod) {
+        
+        filterMethod = method
+        downloadAllowed = true
+    }
 }
 
 extension ViewController: SceneLocationViewDelegate {

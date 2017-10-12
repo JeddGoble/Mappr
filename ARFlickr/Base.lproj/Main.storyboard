@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,96 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ARFlickr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0NW-6q-dmT">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owp-Te-ztk" userLabel="AR View Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOU-R3-bNO" userLabel="Method Select Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="173" id="k6G-rI-WhB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="owp-Te-ztk" firstAttribute="top" secondItem="0NW-6q-dmT" secondAttribute="top" id="2Sx-us-cC8"/>
+                                    <constraint firstItem="sOU-R3-bNO" firstAttribute="leading" secondItem="0NW-6q-dmT" secondAttribute="leading" id="HkB-Cy-Vmy"/>
+                                    <constraint firstAttribute="bottom" secondItem="owp-Te-ztk" secondAttribute="bottom" id="L8a-px-sXV"/>
+                                    <constraint firstAttribute="trailing" secondItem="sOU-R3-bNO" secondAttribute="trailing" id="MKp-lq-GQe"/>
+                                    <constraint firstItem="owp-Te-ztk" firstAttribute="leading" secondItem="0NW-6q-dmT" secondAttribute="leading" id="UC8-Gk-Eye"/>
+                                    <constraint firstItem="sOU-R3-bNO" firstAttribute="top" secondItem="0NW-6q-dmT" secondAttribute="top" id="b4k-s5-hqb"/>
+                                    <constraint firstAttribute="trailing" secondItem="owp-Te-ztk" secondAttribute="trailing" id="hQR-RD-wgG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZD-3h-PzB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTu-GU-DVi">
+                                        <rect key="frame" x="133" y="5" width="109" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="C29-qX-97v"/>
+                                        </constraints>
+                                        <state key="normal" title="Filter Method">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFilterMethodButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Djt-sf-oTI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.14509803921568626" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="kTu-GU-DVi" firstAttribute="centerY" secondItem="AZD-3h-PzB" secondAttribute="centerY" id="8Jo-P1-gJ1"/>
+                                    <constraint firstAttribute="trailing" secondItem="kTu-GU-DVi" secondAttribute="trailing" constant="133" id="Chf-RL-XZR"/>
+                                    <constraint firstAttribute="height" constant="40" id="KC5-wl-2x4"/>
+                                    <constraint firstItem="kTu-GU-DVi" firstAttribute="leading" secondItem="AZD-3h-PzB" secondAttribute="leading" constant="133" id="dpN-1A-npM"/>
+                                    <constraint firstItem="kTu-GU-DVi" firstAttribute="centerX" secondItem="AZD-3h-PzB" secondAttribute="centerX" id="ikL-l1-jBr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-X8-yXW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" red="1" green="0.14509803921568626" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RYD-X8-yXW" secondAttribute="trailing" id="4mG-PA-Qcm"/>
+                            <constraint firstItem="AZD-3h-PzB" firstAttribute="top" secondItem="RYD-X8-yXW" secondAttribute="bottom" id="APw-9O-dEr"/>
+                            <constraint firstItem="AZD-3h-PzB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IOA-Ku-sXd"/>
+                            <constraint firstItem="0NW-6q-dmT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WlO-Fc-xk3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0NW-6q-dmT" secondAttribute="bottom" id="XuW-4D-eZW"/>
+                            <constraint firstItem="RYD-X8-yXW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Y91-N2-eUj"/>
+                            <constraint firstItem="AZD-3h-PzB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ihi-3i-dd5"/>
+                            <constraint firstItem="RYD-X8-yXW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iu7-fA-fUV"/>
+                            <constraint firstItem="AZD-3h-PzB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="l7a-aU-8IJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0NW-6q-dmT" secondAttribute="trailing" id="nfP-TH-pEh"/>
+                            <constraint firstItem="0NW-6q-dmT" firstAttribute="top" secondItem="AZD-3h-PzB" secondAttribute="bottom" id="yvx-ID-8iv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="arViewContainer" destination="owp-Te-ztk" id="UFU-cz-iGl"/>
+                        <outlet property="methodSelectViewContainer" destination="sOU-R3-bNO" id="Utj-ku-1S9"/>
+                        <outlet property="statusBarBackgroundView" destination="RYD-X8-yXW" id="OeB-he-d5n"/>
+                        <outlet property="topBarView" destination="AZD-3h-PzB" id="bKs-dR-Mzb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
 </document>

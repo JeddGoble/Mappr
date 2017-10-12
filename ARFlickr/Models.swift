@@ -38,3 +38,20 @@ struct FlickrPhoto: Codable {
     var latitude: Double?
     var longitude: Double?
 }
+
+enum FilterMethod {
+    case dateTaken
+    case relevance
+    case interestingness
+    
+    var apiArgument: String {
+        switch self {
+        case .dateTaken:
+            return "date-posted-desc"
+        case .relevance:
+            return "relevance"
+        case .interestingness:
+            return "interestingness-desc"
+        }
+    }
+}
