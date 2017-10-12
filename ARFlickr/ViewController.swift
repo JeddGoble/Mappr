@@ -197,8 +197,6 @@ extension ViewController: CLLocationManagerDelegate {
         downloadAllowed = false
         downloadTimer = Timer.scheduledTimer(timeInterval: 120.0, target: self, selector: #selector(self.reEnableDownloadAllowed), userInfo: nil, repeats: false)
         
-        print("Attempting Flickr API call")
-        
         guard let location = locations.first else {
             print("No location found")
             return
@@ -208,6 +206,8 @@ extension ViewController: CLLocationManagerDelegate {
             print("No Flickr API key found. Paste your key into the String at the top of ViewController.swift")
             return
         }
+        
+        print("Attempting Flickr API call")
         
         var page: Int = 1
         
