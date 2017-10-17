@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     // Paste your own Flickr API Key here:
     var flickrAPIKey: String {
-        return "0fa112504f3a3e7c9d74cad429d6f709"
+        return ""
     }
     
     var sceneLocationView = SceneLocationView()
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         
         let location = CLLocation(latitude: lat, longitude: lon)
         
-        // Check for identical coordinates and discard if found ... prevent flickering images
+        // Check for identical coordinates and discard if found ... prevents flickering images
         for node in locationNodes {
             if node.location.coordinate.latitude == location.coordinate.latitude && node.location.coordinate.longitude == location.coordinate.longitude {
                 return

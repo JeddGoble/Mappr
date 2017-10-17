@@ -17,6 +17,8 @@
 		AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */; };
 		AF97BB7B1F8FF0EF00B980F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */; };
 		AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9EFC81F8D792700F5B8A9 /* Models.swift */; };
+		AFC2A9271F967B9800271FD2 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A9261F967B9800271FD2 /* PhotoAnnotationView.swift */; };
+		AFC2A9291F967BD200271FD2 /* PhotoAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A9281F967BD200271FD2 /* PhotoAnnotationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodSelectView.swift; sourceTree = "<group>"; };
 		AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AFB9EFC81F8D792700F5B8A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		AFC2A9261F967B9800271FD2 /* PhotoAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotationView.swift; sourceTree = "<group>"; };
+		AFC2A9281F967BD200271FD2 /* PhotoAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoAnnotationView.xib; sourceTree = "<group>"; };
 		CD2CA98DF0C7D2BC7C93B7B1 /* Pods-ARFlickr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.release.xcconfig"; sourceTree = "<group>"; };
 		EADA081104982122CE830C07 /* Pods-ARFlickr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARFlickr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARFlickr/Pods-ARFlickr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +85,8 @@
 				AF4B33291F8D6E28001E919E /* ViewController.swift */,
 				AF97BB7A1F8FF0EF00B980F8 /* Extensions.swift */,
 				AFB9EFC81F8D792700F5B8A9 /* Models.swift */,
+				AFC2A9261F967B9800271FD2 /* PhotoAnnotationView.swift */,
+				AFC2A9281F967BD200271FD2 /* PhotoAnnotationView.xib */,
 				AF4B332B1F8D6E28001E919E /* Main.storyboard */,
 				AF97BB761F8FE4AB00B980F8 /* MethodSelectView.xib */,
 				AF97BB781F8FE69700B980F8 /* MethodSelectView.swift */,
@@ -163,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4B33321F8D6E28001E919E /* LaunchScreen.storyboard in Resources */,
+				AFC2A9291F967BD200271FD2 /* PhotoAnnotationView.xib in Resources */,
 				AF97BB771F8FE4AB00B980F8 /* MethodSelectView.xib in Resources */,
 				AF4B332F1F8D6E28001E919E /* Assets.xcassets in Resources */,
 				AF4B332D1F8D6E28001E919E /* Main.storyboard in Resources */,
@@ -224,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC2A9271F967B9800271FD2 /* PhotoAnnotationView.swift in Sources */,
 				AF97BB7B1F8FF0EF00B980F8 /* Extensions.swift in Sources */,
 				AFB9EFC91F8D792700F5B8A9 /* Models.swift in Sources */,
 				AF97BB791F8FE69700B980F8 /* MethodSelectView.swift in Sources */,
@@ -367,10 +375,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YUYQ7F3X7U;
+				DEVELOPMENT_TEAM = T85QJN383J;
 				INFOPLIST_FILE = ARFlickr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jedd.ARFlickr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jedd.Mappr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -383,10 +391,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YUYQ7F3X7U;
+				DEVELOPMENT_TEAM = T85QJN383J;
 				INFOPLIST_FILE = ARFlickr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jedd.ARFlickr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jedd.Mappr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
